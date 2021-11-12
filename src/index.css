@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
-*{
-  margin: 0;
-  padding: 0;
+* {
+   margin: 0;
+   padding: 0;
+}
+
+html {
+   font-size: 16px;
 }
 
 body {
@@ -9,25 +13,25 @@ body {
    padding: 0%;
    font-family: montserrat, arial, verdana;
    width: 100%;
+   background-image: url('https://i.gifer.com/fxVE.gif');
+   background-position: center;
 }
 
-#root{
+#root {
    width: 100%;
 }
 
-.App {
-   background-image: url('https://i.gifer.com/fxVE.gif');
-   background-position: center;
-   height: 100vh;
+.login_container{
    display: grid;
    place-items: center;
+   min-height: 100vh;
 }
 
-.App .login_title {
-   font-family: 'Montserrat', sans-serif;
+.login_container .login_title {
+   font-family: 'Poppins', sans-serif;
    font-size: 3rem;
-   color: #fff;
-   text-shadow: 0 0 10px #000;
+   color: yellow;
+   text-shadow: 2px 2px 6px red;
 }
 
 .form {
@@ -51,10 +55,12 @@ body {
    margin: auto;
 }
 
-.form_container .header {
+.login_container .form_container .header {
+   color: rgb(98, 0, 255);
    flex: 20%;
    display: grid;
    place-items: center;
+   font-size: 1.5rem;
 }
 
 .form_container .body {
@@ -71,11 +77,11 @@ body {
    border-radius: 7px;
    width: 100px;
    height: 40px;
-   background-color: rgb(255, 0, 140);
+   background-color: rgb(98, 0, 255);
    font-weight: bold;
    color: white;
    border: 0 none;
-   border-radius: 1px;
+   border-radius: 4px;
    cursor: pointer;
    padding: 10px 5px;
    margin: 10px 5px;
@@ -83,9 +89,8 @@ body {
 }
 
 .form_container .footer button:disabled {
-   background-color: rgb(94, 10, 56);
+   background-color: rgb(28, 9, 59);
 }
-
 
 .sign_up_container {
    height: 100%;
@@ -125,7 +130,9 @@ body {
 .progress_bar {
    width: 400px;
    height: 10px;
-   background-color: white;
+   background-color: yellow;
+   /* box-shadow: 2px 2px 6px red; */
+   border-radius: 5px;
    margin-bottom: 50px;
 }
 
@@ -142,6 +149,7 @@ body {
    height: 100%;
    background-color: rgb(98, 0, 255);
    transition: width 0.2s ease-in-out;
+   border-radius: 5px;
 }
 
 .other_info_container {
@@ -175,4 +183,5 @@ form label {
    font-size: 12px;
    font-style: italic;
    margin: 5px 0;
+   color: black;
 }

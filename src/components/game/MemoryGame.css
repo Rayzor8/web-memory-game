@@ -1,0 +1,104 @@
+
+body {
+   font-family: 'Poppins', sans-serif;
+   margin: 0;
+   background-color: darkblue;
+   color: white;
+}
+
+.memory {
+   max-width: 860px;
+   margin: 40px auto;
+}
+
+.memory-title {
+   font-size: 3rem;
+   font-weight: 900;
+   text-shadow: 2px 2px 4px #000000;
+   text-align: center;
+   padding: 2rem 1rem;
+}
+
+.memory-title span {
+   font-size: 2rem;
+   color: yellow;
+   text-shadow: 2px 2px 6px red;
+}
+
+.memory .remain-turn{
+   font-size: 1.2rem;
+   font-weight: 900;
+   text-shadow: 2px 2px 4px #000000;
+   padding: 2rem 1rem;
+   display: flex;
+   align-items:center ;
+}
+.memory .remain-turn span{
+   display: block;
+   color: yellow;
+   text-shadow: 2px 2px 6px red;
+   padding-left: .5rem;
+}
+
+.memory .remain-turn .gameover{
+   font-size: 2rem;
+   width: max-content;
+}
+
+
+.button {
+   font-family: 'Poppins', sans-serif;
+   background: none;
+   border: 2px solid white;
+   padding: 6px 12px;
+   border-radius: 4px;
+   font-weight: bold;
+   cursor: pointer;
+   font-size: 0.8rem;
+   transition: all 300ms ease-in-out;
+   color: white;
+   /* margin: 0 auto; */
+   display: block;
+   text-decoration: none;
+}
+
+.menu-button-container{
+   display: flex;
+   justify-content: center;
+   gap: 1rem;
+}
+
+.button:hover {
+   background: yellow;
+   color: darkblue;
+}
+
+.card-container {
+   position: relative;
+   transition: all 300ms ease-in-out;
+}
+
+.card-grid {
+   margin: 0 10px;
+   margin-top: 10px;
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   grid-gap: 10px;
+   position: absolute;
+   padding-bottom: 20px;
+}
+
+@media screen and (max-width: 760px) {
+   .memory-title {
+      font-size: 2.5rem;
+   }
+
+   .memory .remain-turn {
+      font-size:calc(1.2rem - 6px);
+   }
+
+   .memory .remain-turn .gameover{
+      font-size: calc(2rem - 9px);
+      
+   }
+}
