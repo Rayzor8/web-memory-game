@@ -34,18 +34,20 @@ body {
    height: 100%;
    display: flex;
    flex-direction: column;
-   justify-content: start;
+   justify-content: flex-start;
    align-items: center;
 }
 
 .form_container {
    width: 400px;
+   max-width: 80%;
    height: 400px;
    background-color: white;
    border-radius: 8px;
    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
    display: flex;
    flex-direction: column;
+   margin: auto;
 }
 
 .form_container .header {
@@ -77,6 +79,10 @@ body {
    padding: 10px 5px;
    margin: 10px 5px;
    margin: 5px;
+}
+
+.form_container .footer button:disabled{
+   background-color: rgb(94, 10, 56);
 }
 
 .sign_up_container {
@@ -121,6 +127,14 @@ body {
    margin-bottom: 50px;
 }
 
+/* media small screen */
+@media screen and (max-width: 600px) {
+   .progress_bar {
+      width : 80%;
+      margin: 0 auto;
+   }
+}
+
 .progress_bar div {
    width: 33.3%;
    height: 100%;
@@ -150,6 +164,15 @@ input {
    border-radius: 5px;
 }
 
-input:focus {
-   border: 3px solid rgb(98, 0, 255);
+input::placeholder{
+   font-size: 1rem;
+   padding-left: 10px;
+}
+
+
+
+form label {
+   font-size: 12px;
+   font-style: italic;
+   margin: 5px 0;
 }
