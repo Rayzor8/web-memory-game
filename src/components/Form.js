@@ -7,16 +7,16 @@ import SignUpInfo from './SignUpInfo';
 const Form = () => {
    const [page, setPage] = useState(0);
    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-        confirmPassword: '',
-        firstName: '',
-        lastName: '',
-        username: '',
-        nationality:'',
-   }) 
+      email: '',
+      password: '',
+      confirmPassword: '',
+      firstName: '',
+      lastName: '',
+      username: '',
+      nationality: '',
+   });
 
-   console.log(formData)
+   console.log(formData);
 
    const formTitles = ['Sign Up', 'Personal Info', 'Other'];
    const pageDisplayHTML = () => {
@@ -26,7 +26,7 @@ const Form = () => {
    };
 
    return (
-      <formContext.Provider value={{formData,setFormData}}>
+      <formContext.Provider value={{ formData, setFormData }}>
          <div className="form">
             <div className="progress_bar">
                <div
@@ -48,10 +48,21 @@ const Form = () => {
                      Prev
                   </button>
                   <button
-                     onClick={() => setPage((prev) => prev + 1)}
-                     disabled={page === formTitles.length - 1}
+                     onClick={() => {
+                        // if on last page, submit form
+                        if (page === formTitles.length -1) {
+                           alert(JSON.stringify(formData, null, 4));
+                        } else {
+                           setPage((prev) => prev + 1);
+                        }
+                     }}
+                     type={page === formTitles.length - 1 ? 'submit' : 'button'}
                   >
-                     Next
+                     {page === formTitles.length - 1 ? (
+                        <span className="submit">Submit</span>
+                     ) : (
+                        <span>Next</span>
+                     )}
                   </button>
                </div>
             </div>
