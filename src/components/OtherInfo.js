@@ -18,7 +18,6 @@ const OtherInfo = () => {
                   : { border: '3px solid green' }
             }
          />
-
       </form>
    );
 };

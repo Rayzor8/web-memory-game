@@ -1,10 +1,14 @@
 import Form from './components/Form';
+import { Routes, Route, Link } from "react-router-dom";
+import MemoryGame from './components/game/MemoryGame';
 
 function App() {
   return (
     <div className="App">
-        <h1 className="login_title">Game Login</h1>
-        <Form/>
+      <Routes>
+        <Route path="/" element={<Form />} />
+        <Route path="/game" element={<MemoryGame />} />
+      </Routes>
     </div>
   );
 }

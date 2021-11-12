@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import { formContext } from '../context/FormContext';
 import OtherInfo from './OtherInfo';
 import PersonalInfo from './PersonalInfo';
@@ -16,9 +17,12 @@ const Form = () => {
       nationality: '',
    });
 
-   console.log(formData);
+   let navigate = useNavigate();
+
+   const buttonHandler = () => page === formTitles.length - 1 ? navigate('/game') : setPage((prev) => prev + 1)
 
    const formTitles = ['Sign Up', 'Personal Info', 'Other'];
+   
    const pageDisplayHTML = () => {
       if (page === 0) return <SignUpInfo />;
       if (page === 1) return <PersonalInfo />;
@@ -27,6 +31,7 @@ const Form = () => {
 
    return (
       <formContext.Provider value={{ formData, setFormData }}>
+         <h1 className="login_title">Game Login</h1>
          <div className="form">
             <div className="progress_bar">
                <div
@@ -48,14 +53,7 @@ const Form = () => {
                      Prev
                   </button>
                   <button
-                     onClick={() => {
-                        // if on last page, submit form
-                        if (page === formTitles.length -1) {
-                           alert(JSON.stringify(formData, null, 4));
-                        } else {
-                           setPage((prev) => prev + 1);
-                        }
-                     }}
+                     onClick={buttonHandler}
                      type={page === formTitles.length - 1 ? 'submit' : 'button'}
                   >
                      {page === formTitles.length - 1 ? (
