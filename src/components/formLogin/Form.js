@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { formContext } from '../../context/FormContext';
 import OtherInfo from './OtherInfo';
 import PersonalInfo from './PersonalInfo';
 import SignUpInfo from './SignUpInfo';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import './formStyle.css'
 
 const Form = () => {
    const [page, setPage] = useState(0);
@@ -17,6 +20,11 @@ const Form = () => {
       username: '',
       nationality: '',
    });
+
+   useEffect(() => {
+      Aos.init({ duration: 1500,once:true });
+   }, []);
+
 
    let navigate = useNavigate();
 
@@ -38,7 +46,7 @@ const Form = () => {
 
    return (
       <formContext.Provider value={{ formData, setFormData }}>
-         <section className="login_container">
+         <section className="login_container" data-aos="fade-right">
             <h1 className="login_title">Rayzor Game</h1>
             <div className="form">
                <div className="progress_bar">
