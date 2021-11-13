@@ -7,6 +7,7 @@ import SignUpInfo from './SignUpInfo';
 
 const Form = () => {
    const [page, setPage] = useState(0);
+
    const [formData, setFormData] = useState({
       email: '',
       password: '',
@@ -19,7 +20,13 @@ const Form = () => {
 
    let navigate = useNavigate();
 
-   const buttonHandler = () => page === formTitles.length - 1 ? navigate('/game') : setPage((prev) => prev + 1)
+   const buttonHandler = () => {
+      if (page === formTitles.length - 1) {
+         navigate('/game');
+         alert('test');
+      }
+      setPage((prev) => prev + 1);
+   };
 
    const formTitles = ['Sign Up', 'Personal Info', 'Other'];
 

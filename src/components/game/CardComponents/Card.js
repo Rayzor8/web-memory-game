@@ -3,21 +3,28 @@ import './CardStyle.css';
 import { cardGameContext } from '../../../context/cardGameContext';
 
 const Card = ({ cards, flipped }) => {
-   const { handleCardChoice,disableClick } = useContext(cardGameContext);
+   const { handleCardChoice, disableClick, turns } =
+      useContext(cardGameContext);
    // click event handler
    const handleClick = () => {
-      if(!disableClick){
-      handleCardChoice(cards);
-      }
+      // if turn is not a number disable click
+      if (isNaN(turns)) return;
+      // check disableClick state
+      if (!disableClick) handleCardChoice(cards);
    };
 
    return (
       <div className="card">
-      <div className={flipped ? "flipped" : ""}>
-        <img className="front" src={cards.src} alt="card front" />
-        <img className="back" src="/img/cover.jpg" onClick={handleClick} alt="cover" />
+         <div className={flipped ? 'flipped' : ''}>
+            <img className="front" src={cards.src} alt="card front" />
+            <img
+               className="back"
+               src="/img/cover.jpg"
+               onClick={handleClick}
+               alt="cover"
+            />
+         </div>
       </div>
-    </div>
    );
 };
 

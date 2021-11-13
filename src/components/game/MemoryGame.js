@@ -7,6 +7,7 @@ import Card from './CardComponents/Card';
 import './MemoryGame.css';
 import { Link } from 'react-router-dom';
 
+
 function MemoryGame() {
    const [cards, setCards] = useState([]);
    const [turns, setTurns] = useState(12);
@@ -14,8 +15,6 @@ function MemoryGame() {
    const [choiceTwo, setChoiceTwo] = useState(null);
    const [disableClick, setDisableClick] = useState(false);
 
-   console.log({ numberOfTurn: turns });
-   console.log({ cardCheatPosition: cards });
    useEffect(() => {
       Aos.init({ duration: 1500 });
    }, []);
@@ -46,11 +45,11 @@ function MemoryGame() {
    // useEffect handleChange of ChoiceOne and ChoiceTwo
    useEffect(() => {
       if (choiceOne && choiceTwo) {
-         // set Disable click after both condition is true
+         // set Disable click after both condition is true         
          setDisableClick(true);
          if (choiceOne.src === choiceTwo.src) {
             setCards((prevCard) =>
-               prevCard.map((card) =>
+               prevCard.map((card) => 
                   card.src === choiceOne.src ? { ...card, isMatch: true } : card
                )
             );
@@ -72,7 +71,7 @@ function MemoryGame() {
    };
 
    return (
-      <cardGameContext.Provider value={{ handleCardChoice, disableClick }}>
+      <cardGameContext.Provider value={{ handleCardChoice, disableClick ,turns,setTurns}}>
          <div className="memory">
             <h1 className="memory-title" data-aos="fade-right">
                Match a Famous Soccer Player. <br />
