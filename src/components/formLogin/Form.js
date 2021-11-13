@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { formContext } from '../context/FormContext';
+import { formContext } from '../../context/FormContext';
 import OtherInfo from './OtherInfo';
 import PersonalInfo from './PersonalInfo';
 import SignUpInfo from './SignUpInfo';

@@ -1,4 +1,4 @@
-import Form from './components/Form';
+import Form from './components/formLogin/Form';
 import { Routes, Route } from "react-router-dom";
 import MemoryGame from './components/game/MemoryGame';
 

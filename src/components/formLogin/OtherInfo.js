@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { formContext } from '../context/FormContext';
+import { formContext } from '../../context/FormContext';
 const OtherInfo = () => {
    const { formData, setFormData } = useContext(formContext);
    return (

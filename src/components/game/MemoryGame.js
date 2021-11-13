@@ -16,7 +16,7 @@ function MemoryGame() {
    const [disableClick, setDisableClick] = useState(false);
 
    useEffect(() => {
-      Aos.init({ duration: 1500 });
+      Aos.init({ duration: 1500,once:true });
    }, []);
 
    // function for handle onlick Newgame Button
