@@ -1,7 +1,10 @@
 .login_container {
-   display: grid;
-   place-items: center;
    min-height: 100vh;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
 }
 
 .login_container .login_title {
@@ -9,6 +12,7 @@
    font-size: 3rem;
    color: yellow;
    text-shadow: 2px 2px 6px red;
+   margin-bottom: 1rem;
 }
 
 .form {
@@ -18,6 +22,7 @@
    flex-direction: column;
    justify-content: flex-start;
    align-items: center;
+   gap: 0.2rem;
 }
 
 .form_container {
@@ -29,15 +34,16 @@
    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
    display: flex;
    flex-direction: column;
-   margin: auto;
+   margin:  auto;
 }
 
 .login_container .form_container .header {
    color: rgb(98, 0, 255);
    flex: 20%;
-   display: grid;
-   place-items: center;
+   display: flex;
    font-size: 1.5rem;
+   justify-content: center;
+   align-items: center;
 }
 
 .form_container .body {
@@ -116,8 +122,15 @@
 /* media small screen */
 @media screen and (max-width: 600px) {
    .progress_bar {
-      width: 80%;
+      max-width: 80%;
       margin: 0 auto;
+   }
+   .login_container .login_title{
+       font-size: 2rem;
+   }
+
+   .form{
+       gap: 2rem;
    }
 }
 

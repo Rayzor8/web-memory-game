@@ -1,14 +1,9 @@
 
-body {
-   font-family: 'Poppins', sans-serif;
-   margin: 0;
-   background-color: darkblue;
-   color: white;
-}
-
 .memory {
    max-width: 860px;
    margin: 40px auto;
+   color: white;
+   font-family: 'Poppins', sans-serif;
 }
 
 .memory-title {
