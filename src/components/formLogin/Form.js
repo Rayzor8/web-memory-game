@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { formContext } from '../../context/FormContext';
 import OtherInfo from './OtherInfo';
@@ -6,7 +6,7 @@ import PersonalInfo from './PersonalInfo';
 import SignUpInfo from './SignUpInfo';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import './formStyle.css'
+import './formStyle.css';
 
 const Form = () => {
    const [page, setPage] = useState(0);
@@ -22,16 +22,23 @@ const Form = () => {
    });
 
    useEffect(() => {
-      Aos.init({ duration: 1500,once:true });
+      Aos.init({ duration: 1500, once: true });
    }, []);
-
 
    let navigate = useNavigate();
 
    const buttonHandler = () => {
       if (page === formTitles.length - 1) {
-         navigate('/game');
-         alert('test');
+         for(const property in formData) {
+            if(formData[property]) {
+               alert('Succes to login');
+               navigate('/game');
+               return
+            }else{
+               alert('Please fill all fields');
+               return
+            }
+         }
       }
       setPage((prev) => prev + 1);
    };

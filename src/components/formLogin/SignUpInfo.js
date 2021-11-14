@@ -4,7 +4,7 @@ import { formContext } from '../../context/FormContext';
 
 const SignUpInfo = () => {
    const { formData, setFormData } = useContext(formContext);
-
+   
    return (
       <form className="sign_up_container">
          <label>Input data minimum 4 characters</label>

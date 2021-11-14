@@ -44,6 +44,7 @@
    font-size: 1.5rem;
    justify-content: center;
    align-items: center;
+   text-transform: capitalize;
 }
 
 .form_container .body {
