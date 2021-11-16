@@ -30,7 +30,7 @@ const Form = () => {
    const buttonHandler = () => {
       if (page === formTitles.length - 1) {
          for(const property in formData) {
-            if(formData[property]) {
+            if(formData[property] && formData[property].length < 4) {
                alert('Succes to login');
                navigate('/game');
                return
