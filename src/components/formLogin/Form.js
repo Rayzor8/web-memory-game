@@ -27,12 +27,13 @@ const Form = () => {
    }, []);
 
    let navigate = useNavigate();
+   const formTitles = ['Sign Up', 'Personal Info', 'Other'];
 
    const buttonHandler = () => {
       if (page === formTitles.length - 1) {
-         for (const property in formData) {
-            if (formData[property] && formData[property].length > 4) {
-               swal({
+         Object.values(formData).map(async (value) => {
+            if (value && value.length > 4) {
+               return await swal({
                   title: 'Success',
                   text: 'Press Enter key to start the game',
                   icon: 'success',
@@ -40,22 +41,19 @@ const Form = () => {
                }).then(() => {
                   navigate('/game');
                });
-               return;
             } else {
-               swal({
+               return swal({
                   title: 'Please fill all fields',
                   icon: 'error',
                   timer: 2000,
                   button: 'Back',
                });
-               return;
             }
-         }
+         });
+         return formTitles.length - 1;
       }
       setPage((prev) => prev + 1);
    };
-
-   const formTitles = ['Sign Up', 'Personal Info', 'Other'];
 
    const pageDisplayHTML = () => {
       if (page === 0) return <SignUpInfo />;
