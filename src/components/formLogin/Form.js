@@ -7,6 +7,7 @@ import SignUpInfo from './SignUpInfo';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import './formStyle.css';
+import swal from 'sweetalert';
 
 const Form = () => {
    const [page, setPage] = useState(0);
@@ -29,14 +30,25 @@ const Form = () => {
 
    const buttonHandler = () => {
       if (page === formTitles.length - 1) {
-         for(const property in formData) {
-            if(formData[property] && formData[property].length < 4) {
-               alert('Succes to login');
-               navigate('/game');
-               return
-            }else{
-               alert('Please fill all fields');
-               return
+         for (const property in formData) {
+            if (formData[property] && formData[property].length > 4) {
+               swal({
+                  title: 'Success',
+                  text: 'Press Enter key to start the game',
+                  icon: 'success',
+                  button: 'Enter',
+               }).then(() => {
+                  navigate('/game');
+               });
+               return;
+            } else {
+               swal({
+                  title: 'Please fill all fields',
+                  icon: 'error',
+                  timer: 2000,
+                  button: 'Back',
+               });
+               return;
             }
          }
       }
