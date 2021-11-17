@@ -31,9 +31,9 @@ const Form = () => {
 
    const buttonHandler = () => {
       if (page === formTitles.length - 1) {
-         Object.values(formData).map(async (value) => {
-            if (value && value.length > 4) {
-               return await swal({
+         Object.values(formData).map((value) => {
+            if (value  && value.length > 4) {
+               return swal({
                   title: 'Success',
                   text: 'Press Enter key to start the game',
                   icon: 'success',
@@ -50,6 +50,7 @@ const Form = () => {
                });
             }
          });
+
          return formTitles.length - 1;
       }
       setPage((prev) => prev + 1);
