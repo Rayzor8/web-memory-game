@@ -5,20 +5,27 @@ import 'aos/dist/aos.css';
 import { cardGameContext } from '../../context/cardGameContext';
 import Card from './CardComponents/Card';
 import './MemoryGame.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useFormContext } from '../../context/FormContext';
 
 
 function MemoryGame() {
+   const { formData } = useFormContext();
    const [cards, setCards] = useState([]);
    const [turns, setTurns] = useState(12);
    const [choiceOne, setChoiceOne] = useState(null);
    const [choiceTwo, setChoiceTwo] = useState(null);
    const [disableClick, setDisableClick] = useState(false);
+   
+   const navigate = useNavigate()
+
+   if(!formData.username) navigate('/')
 
    useEffect(() => {
       Aos.init({ duration: 1500,once:true });
    }, []);
 
+   
    // function for handle onlick Newgame Button
    const suffleCards = () => {
       const randomCards = [...cardImages, ...cardImages]

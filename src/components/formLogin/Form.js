@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { formContext } from '../../context/FormContext';
+import { formContext, useFormContext } from '../../context/FormContext';
 import OtherInfo from './OtherInfo';
 import PersonalInfo from './PersonalInfo';
 import SignUpInfo from './SignUpInfo';
@@ -10,18 +10,8 @@ import './formStyle.css';
 import swal from 'sweetalert';
 
 const Form = () => {
-   const [page, setPage] = useState(0);
-
-   const [formData, setFormData] = useState({
-      email: '',
-      password: '',
-      confirmPassword: '',
-      firstName: '',
-      lastName: '',
-      username: '',
-      nationality: '',
-   });
-
+   const { page, setPage, formData } = useFormContext();
+   console.log(page)
    useEffect(() => {
       Aos.init({ duration: 1500, once: true });
    }, []);
@@ -32,7 +22,7 @@ const Form = () => {
    const buttonHandler = () => {
       if (page === formTitles.length - 1) {
          Object.values(formData).map((value) => {
-            if (value  && value.length > 4) {
+            if (value && value.length > 4) {
                return swal({
                   title: 'Success',
                   text: 'Press Enter key to start the game',
@@ -63,46 +53,42 @@ const Form = () => {
    };
 
    return (
-      <formContext.Provider value={{ formData, setFormData }}>
-         <section className="login_container" data-aos="fade-right">
-            <h1 className="login_title">Rayzor Game</h1>
-            <div className="form">
-               <div className="progress_bar">
-                  <div
-                     style={{
-                        width: page === 0 ? '33%' : page === 1 ? '66%' : '100%',
-                     }}
-                  ></div>
+      <section className="login_container" data-aos="fade-right">
+         <h1 className="login_title">Rayzor Game</h1>
+         <div className="form">
+            <div className="progress_bar">
+               <div
+                  style={{
+                     width: page === 0 ? '33%' : page === 1 ? '66%' : '100%',
+                  }}
+               ></div>
+            </div>
+            <div className="form_container">
+               <div className="header">
+                  <h1>{formTitles[page]}</h1>
                </div>
-               <div className="form_container">
-                  <div className="header">
-                     <h1>{formTitles[page]}</h1>
-                  </div>
-                  <div className="body">{pageDisplayHTML()}</div>
-                  <div className="footer">
-                     <button
-                        onClick={() => setPage((prev) => prev - 1)}
-                        disabled={page === 0}
-                     >
-                        Prev
-                     </button>
-                     <button
-                        onClick={buttonHandler}
-                        type={
-                           page === formTitles.length - 1 ? 'submit' : 'button'
-                        }
-                     >
-                        {page === formTitles.length - 1 ? (
-                           <span className="submit">Submit</span>
-                        ) : (
-                           <span>Next</span>
-                        )}
-                     </button>
-                  </div>
+               <div className="body">{pageDisplayHTML()}</div>
+               <div className="footer">
+                  <button
+                     onClick={() => setPage((prev) => prev - 1)}
+                     disabled={page === 0}
+                  >
+                     Prev
+                  </button>
+                  <button
+                     onClick={buttonHandler}
+                     type={page === formTitles.length - 1 ? 'submit' : 'button'}
+                  >
+                     {page === formTitles.length - 1 ? (
+                        <span className="submit">Submit</span>
+                     ) : (
+                        <span>Next</span>
+                     )}
+                  </button>
                </div>
             </div>
-         </section>
-      </formContext.Provider>
+         </div>
+      </section>
    );
 };
 
