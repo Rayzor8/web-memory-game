@@ -43,7 +43,7 @@
 
 .button {
    font-family: 'Poppins', sans-serif;
-   background: none;
+   background: yellow;
    border: 2px solid white;
    padding: 6px 12px;
    border-radius: 4px;
@@ -51,7 +51,7 @@
    cursor: pointer;
    font-size: 0.8rem;
    transition: all 300ms ease-in-out;
-   color: white;
+   color: darkblue;
    /* margin: 0 auto; */
    display: block;
    text-decoration: none;
@@ -64,7 +64,7 @@
 }
 
 .button:hover {
-   background: yellow;
+   background: white;
    color: darkblue;
 }
 

@@ -5,18 +5,23 @@ import 'aos/dist/aos.css';
 import { cardGameContext } from '../../context/cardGameContext';
 import Card from './CardComponents/Card';
 import './MemoryGame.css';
-import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
+import { useFormContext } from '../../context/FormContext';
 
 function MemoryGame() {
+   const { formData, setFormData,setPage } = useFormContext();
    const [cards, setCards] = useState([]);
    const [turns, setTurns] = useState(12);
    const [choiceOne, setChoiceOne] = useState(null);
    const [choiceTwo, setChoiceTwo] = useState(null);
    const [disableClick, setDisableClick] = useState(false);
 
+   const navigate = useNavigate();
+
+   if (!formData.username) navigate('/');
+
    useEffect(() => {
-      Aos.init({ duration: 1500,once:true });
+      Aos.init({ duration: 1500, once: true });
    }, []);
 
    // function for handle onlick Newgame Button
@@ -45,11 +50,11 @@ function MemoryGame() {
    // useEffect handleChange of ChoiceOne and ChoiceTwo
    useEffect(() => {
       if (choiceOne && choiceTwo) {
-         // set Disable click after both condition is true         
+         // set Disable click after both condition is true
          setDisableClick(true);
          if (choiceOne.src === choiceTwo.src) {
             setCards((prevCard) =>
-               prevCard.map((card) => 
+               prevCard.map((card) =>
                   card.src === choiceOne.src ? { ...card, isMatch: true } : card
                )
             );
@@ -70,17 +75,35 @@ function MemoryGame() {
       setDisableClick(false);
    };
 
+   const handleLogout = () => {
+      navigate('/');
+      setFormData({
+         email: '',
+         password: '',
+         firstName: '',
+         lastName: '',
+         username: '',
+         nationality: '',
+      });
+      setPage(0);
+   };
+
    return (
-      <cardGameContext.Provider value={{ handleCardChoice, disableClick ,turns,setTurns}}>
+      <cardGameContext.Provider
+         value={{ handleCardChoice, disableClick, turns, setTurns }}
+      >
          <div className="memory">
             <h1 className="memory-title" data-aos="fade-right">
                Match a Famous Soccer Player. <br />
-               <span>Rayzor.dev</span>
+               <span>Welcome {formData.username} !!</span>
             </h1>
             <div className="menu-button-container">
-               <button onClick={suffleCards} className="button">Restart Game</button>
-               <Link to="/" className="button">Logout</Link>
-               
+               <button onClick={suffleCards} className="button">
+                  Restart Game
+               </button>
+               <button onClick={handleLogout} className="button">
+                  Logout
+               </button>
             </div>
             <h5 className="remain-turn">
                Remain turn :<span>{turns}</span>
