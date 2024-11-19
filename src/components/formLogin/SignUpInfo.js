@@ -1,10 +1,6 @@
 import React, { useContext } from 'react';
 import { formContext } from '../../context/FormContext';
 
-const borderStyle = {
-   normal: '2px solid rgb(98, 0, 255)',
-   success: '3px solid green',
-};
 const SignUpInfo = () => {
    const { formData, setFormData } = useContext(formContext);
    return (
