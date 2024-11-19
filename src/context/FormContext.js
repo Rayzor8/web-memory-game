@@ -7,7 +7,6 @@ const FormContextProvider = ({ children }) => {
    const [formData, setFormData] = useState({
       email: '',
       password: '',
-      confirmPassword: '',
       firstName: '',
       lastName: '',
       username: '',

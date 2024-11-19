@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { formContext } from '../../context/FormContext';
 
-
+const borderStyle = {
+   normal: '2px solid rgb(98, 0, 255)',
+   success: '3px solid green',
+};
 const SignUpInfo = () => {
    const { formData, setFormData } = useContext(formContext);
-   
    return (
       <form className="sign_up_container">
          <label>Input data minimum 4 characters</label>
@@ -15,11 +17,7 @@ const SignUpInfo = () => {
             onChange={(e) =>
                setFormData({ ...formData, email: e.target.value })
             }
-            style={
-               formData.email.length < 4
-                  ? { border: '2px solid rgb(98, 0, 255)' }
-                  : { border: '3px solid green' }
-            }
+            className={formData.email.length > 3 ? 'borderInputSuccess' : 'borderInput'}
          />
          <input
             type="password"
@@ -28,24 +26,7 @@ const SignUpInfo = () => {
             onChange={(e) =>
                setFormData({ ...formData, password: e.target.value })
             }
-            style={
-               formData.password.length < 4
-                  ? { border: '2px solid rgb(98, 0, 255)'}
-                  : { border: '3px solid green' }
-            }
-         />
-         <input
-            type="password"
-            placeholder="Confirm Password..."
-            value={formData.confirmPassword}
-            onChange={(e) =>
-               setFormData({ ...formData, confirmPassword: e.target.value })
-            }
-            style={
-               formData.confirmPassword.length < 4
-                  ? { border: '2px solid rgb(98, 0, 255)' }
-                  : { border: '3px solid green' }
-            }
+            className={formData.password.length > 3 ? 'borderInputSuccess' : 'borderInput'}
          />
       </form>
    );

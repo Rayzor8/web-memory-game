@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { formContext, useFormContext } from '../../context/FormContext';
+import { useFormContext } from '../../context/FormContext';
 import OtherInfo from './OtherInfo';
 import PersonalInfo from './PersonalInfo';
 import SignUpInfo from './SignUpInfo';
@@ -11,7 +11,6 @@ import swal from 'sweetalert';
 
 const Form = () => {
    const { page, setPage, formData } = useFormContext();
-   console.log(page)
    useEffect(() => {
       Aos.init({ duration: 1500, once: true });
    }, []);
@@ -21,28 +20,32 @@ const Form = () => {
 
    const buttonHandler = () => {
       if (page === formTitles.length - 1) {
-         Object.values(formData).map((value) => {
-            if (value && value.length > 4) {
-               return swal({
-                  title: 'Success',
-                  text: 'Press Enter key to start the game',
-                  icon: 'success',
-                  button: 'Enter',
-               }).then(() => {
-                  navigate('/game');
-               });
-            } else {
-               return swal({
-                  title: 'Please fill all fields',
-                  icon: 'error',
-                  timer: 2000,
-                  button: 'Back',
-               });
-            }
-         });
+         
+         const allFieldsValid = Object.values(formData).every(
+            (value) => value && value.length > 3
+         );
 
-         return formTitles.length - 1;
+         if (allFieldsValid) {
+            swal({
+               title: 'Success',
+               text: 'Press Enter key to start the game',
+               icon: 'success',
+               button: 'Enter',
+            }).then(() => {
+               navigate('/game');
+            });
+         } else {
+            swal({
+               title: 'Please fill all fields correctly',
+               text: 'Each field must be filled and have more than 4 characters.',
+               icon: 'error',
+               timer: 2000,
+               button: 'Back',
+            });
+         }
+         return;
       }
+
       setPage((prev) => prev + 1);
    };
 
